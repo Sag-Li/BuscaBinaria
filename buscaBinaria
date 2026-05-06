@@ -1,0 +1,46 @@
+fun buscaBinaria(lista: List<Int>, alvo: Int) {
+    var inicio = 0
+    var final = lista.size - 1
+    var achou = false
+
+    println("Buscando o numero: $alvo")
+
+    while (inicio <= final) {
+        val meio = (inicio + final) / 2
+        val valorNoMeio = lista[meio]
+
+        println("Olhando a posicao $meio, o valor la e $valorNoMeio")
+
+        if (valorNoMeio == alvo) {
+            println("Sucesso! Encontrado numero no indice $meio")
+            achou = true
+            break
+        }
+
+        if (valorNoMeio < alvo) {
+            inicio = meio + 1
+        } else {
+           final = meio - 1
+        }
+    }
+
+    if (achou == false) {
+        println("Numero não encontrado na lista")
+    }
+}
+
+fun main() {
+    val listaOrdenada = listOf(10, 20, 30, 40, 50, 60, 70)
+    
+    println("Lista: $listaOrdenada")
+    print("Digite um numero: ")
+
+    val entrada = readln()
+    val numeroBuscado = entrada.toIntOrNull()
+
+    if (numeroBuscado != null) {
+        buscaBinaria(listaOrdenada, numeroBuscado)
+    } else {
+        println("Erro: Digite um numero valido")
+    }
+}
